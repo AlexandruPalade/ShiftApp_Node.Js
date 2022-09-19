@@ -101,9 +101,16 @@ export default class ShiftController {
         return res.status(200).send(updatedShift);
       }
     } catch (error) {
+
+
       if (error instanceof Error) {
+
+      if (error.message.includes("E11000")) {
+        return res.status(409).send(DefaultError.generate(400,ERRORS.MONGO.DUPLICATE_SHIFT_NAME ));
+      }
         return res.status(400).send(DefaultError.generate(400, error.message));
       }
+
     }
   }
 
