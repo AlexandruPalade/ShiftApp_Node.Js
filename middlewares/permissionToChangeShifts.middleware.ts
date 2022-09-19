@@ -15,10 +15,10 @@ export const permissionToChangeShifts = async (
 
   try {
     const updatedShift = await Shift.findById(id);
-    if (!updatedShift) {
+    if (!updatedShift || updatedShift.active===false) {
       return res
         .status(404)
-        .send(DefaultError.generate(404, ERRORS.MONGO.UNAUTHORIZED));
+        .send(DefaultError.generate(404, ERRORS.MONGO.SHIFT_NOT_FOUND));
     }
 
     const permissionType = await Permission.findById(

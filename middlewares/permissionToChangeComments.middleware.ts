@@ -15,7 +15,7 @@ export const permissionToChangeComments = async (
 
   try {
     const updatedComment = await Comment.findById(id);
-    if (!updatedComment) {
+    if (!updatedComment || updatedComment.active===false) {
       return res
         .status(404)
         .send(DefaultError.generate(404, ERRORS.MONGO.COMMENT_NOT_FOUND));
@@ -27,9 +27,9 @@ export const permissionToChangeComments = async (
 
     const isUserAuthorizedToChange =
       updatedComment?.createdBy?.toString() === req.context?.data._id ||
-      permissionType?.permission === PermissionEnum.Admin;
+      permissionType?.permission === PermissionEnum.Admin 
 
-    if (!isUserAuthorizedToChange) {
+    if (!isUserAuthorizedToChange ) {
       return res
         .status(403)
         .send(DefaultError.generate(403, ERRORS.MONGO.UNAUTHORIZED));

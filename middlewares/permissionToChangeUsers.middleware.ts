@@ -15,7 +15,7 @@ export const permissionToChangeUsers = async (
 
   try {
     const updatedUser = await User.findById(id);
-    if (!updatedUser) {
+    if (!updatedUser || updatedUser.active===false) {
       return res
         .status(404)
         .send(DefaultError.generate(404, ERRORS.MONGO.USER_NOT_FOUND));

@@ -83,7 +83,7 @@ export default class CommentController {
   static async updateCommentById(req: IExtendedRequest, res: Response) {
     try {
       const { id } = req.params;
-
+      
       const updateComment = await Comment.findByIdAndUpdate(id, {
         ...req.body,
         updatedAt: new Date(Date.now())

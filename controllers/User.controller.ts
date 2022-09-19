@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import config, { IConfig } from "config";
 import jwt from "jwt-promisify";
-import nodemailer from 'nodemailer'
 
 import { ERRORS } from "../const/errors";
  
@@ -116,7 +115,7 @@ export default class UserController {
 
     const userPermission = await Permission.findById(permissionId);
     let user;
-
+    
     try {
       if (userPermission?.permission === "admin") {
         user = await User.findById(id);
@@ -124,10 +123,11 @@ export default class UserController {
       } else {
         user = await User.find({
           _id: id,
-          permission: new ObjectId(permissionId)
+          permission: new ObjectId(permissionId),
+          active:true
         });
         if (user.length === 0) {
-          return res.status(404).send(ERRORS.MONGO.USER_NOT_FOUND);
+          return res.status(400).send(DefaultError.generate(404, ERRORS.MONGO.USER_NOT_FOUND))
         }
        res.status(201).send(user)
       }
