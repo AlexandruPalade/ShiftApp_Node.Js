@@ -1,0 +1,15 @@
+{
+  "PORT": 3000,
+  "JWT_SECRET": "ALEXANDRUPALADE2022",
+  "JWT_EXPIRY_TIME": "1h",
+  
+  "MONGODB": {
+    "URI": ""
+  },
+  "EMAIL": {
+    "HOST": "",
+    "PORT": "",
+    "USER": "",
+    "PASSWORD": ""
+  }
+}

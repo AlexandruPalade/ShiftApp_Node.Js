@@ -1,0 +1,12 @@
+{
+  "MONGODB": {
+    "URI": "mongodb+srv://alex:alex@cluster0.5rbr35t.mongodb.net/?retryWrites=true&w=majority"
+  },
+  "EMAIL": {
+    "HOST": "smtp.mailtrap.io",
+    "PORT": 2525,
+    "USER": "0388e2488cdaed",
+    "PASSWORD": "8ce06ba2479bf8",
+    "FROM_ADDRESS": "ShiftApp <noreply>"
+  }
+}
