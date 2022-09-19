@@ -2,7 +2,7 @@
  
 This is a server application to manage shifts.
 
-The main project contains one apllication using TypeScript for back end, and for the databse I use MongoDB. 
+The main project contains one application using TypeScript for back end, and for the databse I use MongoDB. 
 
 In this app an user can add create an account where it will recieve and email via "Mailtrap" and login. After ths use is logged in he/she will recieve a jwt witch contains the id of the user, permissionId, the issue time and the expire time. Any user can update data about them, update the password or even cand delete the account. Users can add shifts, update them, delete or find all shifts that are created by each user. The same thing for comments as well.
 
